@@ -18,6 +18,11 @@ int main(int argc, char **argv)
 
 	//
 	// OS -- OPEN NAMED SEMAPHORE HERE
+	sem_t *sem = sem_open("/callcenter", 0);
+	if (sem == SEM_FAILED) {
+		perror("sem_open failed");
+		exit(1);
+	}
 	//
 
 
@@ -33,6 +38,7 @@ int main(int argc, char **argv)
 
 		//
 		// OS -- LOCK SEMAPHORE HERE
+		sem_wait(sem);
 		//
 
 
@@ -45,6 +51,7 @@ int main(int argc, char **argv)
 
 		//
 		// OS -- UNLOCK SEMAPHORE HERE
+		sem_post(sem);
 		//
 
 

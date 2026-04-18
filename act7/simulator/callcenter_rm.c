@@ -4,4 +4,3 @@
 void main() {
     int r = sem_unlink("callcenter");
 }
-
